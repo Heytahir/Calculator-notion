@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculatrice</title>
-   <style>
+  <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             display: flex;
@@ -56,7 +56,6 @@
             width: 23%;
             margin: 1%;
             padding: 15px 0;
-            background-color: #81d4fa;
             color: white;
             text-decoration: none;
             border-radius: 10px;
@@ -64,24 +63,44 @@
             transition: background-color 0.2s ease;
         }
 
-        a:hover {
-            background-color: #4fc3f7;
+        a.num-button {
+            background-color: #f8bbd0;
+        }
+
+        a.num-button:hover {
+            background-color: #f48fb1;
         }
 
         a.function-button {
-            background-color: #b39ddb;
+            background-color: #ce93d8;
+        }
+
+        a.function-button:hover {
+            background-color: #ba68c8;
         }
 
         a.clear-button {
             background-color: #ef9a9a;
         }
 
+        a.clear-button:hover {
+            background-color: #e57373;
+        }
+
         a.equals-button {
             background-color: #ffcc80;
         }
 
+        a.equals-button:hover {
+            background-color: #ffb74d;
+        }
+
         a.modifier-button {
-            background-color: #aed581;
+            background-color: #b39ddb;
+        }
+
+        a.modifier-button:hover {
+            background-color: #9575cd;
         }
 
         #calculatorFooter {
