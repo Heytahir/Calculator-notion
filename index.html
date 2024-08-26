@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur Simple</title>
+    <title>Calculatrice</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,81 +12,147 @@
             align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
+            margin: 0;
         }
-        .calculator {
+
+        #calculator {
             background-color: #fff;
-            padding: 20px;
             border-radius: 10px;
+            padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
         }
-        .calculator input[type="text"] {
-            width: 100%;
-            height: 40px;
-            text-align: right;
+
+        #display {
+            font-size: 32px;
             margin-bottom: 10px;
-            font-size: 18px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            padding: 0 10px;
+            background-color: #eaeaea;
+            min-height: 40px;
+            text-align: right;
         }
-        .calculator button {
+
+        #statusContainer {
+            height: 20px;
+            margin-bottom: 10px;
+        }
+
+        #status {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        a {
+            display: block;
+            text-align: center;
             width: 23%;
-            height: 50px;
-            font-size: 18px;
             margin: 1%;
-            border-radius: 5px;
-            border: none;
+            padding: 15px 0;
             background-color: #007bff;
             color: white;
-            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 20px;
         }
-        .calculator button.operator {
+
+        a.function-button {
             background-color: #28a745;
         }
-        .calculator button.clear {
+
+        a.clear-button {
             background-color: #dc3545;
+        }
+
+        a.equals-button {
+            background-color: #ffc107;
+        }
+
+        a.modifier-button {
+            background-color: #17a2b8;
+        }
+
+        #calculatorFooter {
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="calculator">
-        <input type="text" id="display" disabled>
-        <br>
-        <button onclick="clearDisplay()" class="clear">C</button>
-        <button onclick="appendNumber('7')">7</button>
-        <button onclick="appendNumber('8')">8</button>
-        <button onclick="appendNumber('9')">9</button>
-        <button onclick="appendNumber('/')">/</button>
-        <br>
-        <button onclick="appendNumber('4')">4</button>
-        <button onclick="appendNumber('5')">5</button>
-        <button onclick="appendNumber('6')">6</button>
-        <button onclick="appendNumber('*')">*</button>
-        <br>
-        <button onclick="appendNumber('1')">1</button>
-        <button onclick="appendNumber('2')">2</button>
-        <button onclick="appendNumber('3')">3</button>
-        <button onclick="appendNumber('-')">-</button>
-        <br>
-        <button onclick="appendNumber('0')">0</button>
-        <button onclick="appendNumber('.')">.</button>
-        <button onclick="calculate()" class="operator">=</button>
-        <button onclick="appendNumber('+')">+</button>
+    <div id="calculator">
+        <div id="display" class="pull-right" contenteditable="true">0</div>
+        <div id="statusContainer">
+            <div id="status" class="pull-right"></div>
+        </div>
+        <div class="button-container">
+            <a class="num-button" href="#" data-value="7">7</a>
+            <a class="num-button" href="#" data-value="8">8</a>
+            <a class="num-button" href="#" data-value="9">9</a>
+            <a class="function-button" href="#" data-value="+">+</a>
+            <a class="num-button" href="#" data-value="4">4</a>
+            <a class="num-button" href="#" data-value="5">5</a>
+            <a class="num-button" href="#" data-value="6">6</a>
+            <a class="function-button" href="#" data-value="-">–</a>
+            <a class="num-button" href="#" data-value="1">1</a>
+            <a class="num-button" href="#" data-value="2">2</a>
+            <a class="num-button" href="#" data-value="3">3</a>
+            <a class="function-button" href="#" data-value="*">×</a>
+            <a class="num-button" href="#" data-value="0">0</a>
+            <a class="num-button" href="#" data-value=".">.</a>
+            <a class="clear-button" href="#" data-value="C">C</a>
+            <a class="function-button" href="#" data-value="/">÷</a>
+            <a class="equals-button" href="#" data-value="=">=</a>
+            <a class="function-button" href="#" data-value="%">%</a>
+            <a class="modifier-button" href="#" data-value="√">√</a>
+            <a class="modifier-button" href="#" data-value="±">±</a>
+        </div>
+        <div id="calculatorFooter">
+            <a id="linangdata" href="#" data-placement="top" data-toggle="tooltip" data-original-title="LinangData">
+                <img src="logo/24x24.png" alt="LinangData Logo">
+            </a>
+        </div>
     </div>
-
     <script>
-        function clearDisplay() {
-            document.getElementById("display").value = "";
-        }
+        document.querySelectorAll('.num-button, .function-button, .clear-button, .equals-button, .modifier-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const value = this.getAttribute('data-value');
+                const display = document.getElementById('display');
+                const status = document.getElementById('status');
 
-        function appendNumber(number) {
-            document.getElementById("display").value += number;
-        }
-
-        function calculate() {
-            let result = eval(document.getElementById("display").value);
-            document.getElementById("display").value = result;
-        }
+                if (value === 'C') {
+                    display.textContent = '0';
+                    status.textContent = '';
+                } else if (value === '=') {
+                    try {
+                        const result = eval(display.textContent);
+                        status.textContent = display.textContent + '=';
+                        display.textContent = result;
+                    } catch {
+                        display.textContent = 'Error';
+                    }
+                } else if (value === '√') {
+                    const result = Math.sqrt(parseFloat(display.textContent));
+                    status.textContent = `√(${display.textContent})`;
+                    display.textContent = result;
+                } else if (value === '±') {
+                    display.textContent = (parseFloat(display.textContent) * -1).toString();
+                } else {
+                    if (display.textContent === '0' || status.textContent.includes('=')) {
+                        display.textContent = value;
+                        status.textContent = '';
+                    } else {
+                        display.textContent += value;
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
