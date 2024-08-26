@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculatrice</title>
-  <style>
+   <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #e3f2fd;
+            background-color: #f3e5f5;
             margin: 0;
         }
 
@@ -27,12 +27,12 @@
             font-size: 28px;
             margin-bottom: 15px;
             padding: 15px;
-            border: 2px solid #b3e5fc;
+            border: 2px solid #cfcfcf;
             border-radius: 10px;
-            background-color: #e1f5fe;
+            background-color: #f5f5f5;
             min-height: 50px;
             text-align: right;
-            color: #0277bd;
+            color: #616161;
         }
 
         #statusContainer {
@@ -42,7 +42,7 @@
 
         #status {
             font-size: 16px;
-            color: #01579b;
+            color: #757575;
         }
 
         .button-container {
@@ -63,6 +63,7 @@
             transition: background-color 0.2s ease;
         }
 
+        /* Chiffres en rose pastel */
         a.num-button {
             background-color: #f8bbd0;
         }
@@ -71,11 +72,14 @@
             background-color: #f48fb1;
         }
 
-        a.function-button {
+        /* Symboles en lilas */
+        a.function-button,
+        a.modifier-button {
             background-color: #ce93d8;
         }
 
-        a.function-button:hover {
+        a.function-button:hover,
+        a.modifier-button:hover {
             background-color: #ba68c8;
         }
 
@@ -93,14 +97,6 @@
 
         a.equals-button:hover {
             background-color: #ffb74d;
-        }
-
-        a.modifier-button {
-            background-color: #b39ddb;
-        }
-
-        a.modifier-button:hover {
-            background-color: #9575cd;
         }
 
         #calculatorFooter {
