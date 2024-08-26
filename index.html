@@ -4,34 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculatrice</title>
-    <style>
+       <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #fce4ec;
             margin: 0;
         }
 
         #calculator {
-            background-color: #fff;
-            border-radius: 10px;
+            background-color: #ffffff;
+            border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             width: 320px;
         }
 
         #display {
-            font-size: 32px;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #eaeaea;
-            min-height: 40px;
+            font-size: 28px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 2px solid #f48fb1;
+            border-radius: 10px;
+            background-color: #f8bbd0;
+            min-height: 50px;
             text-align: right;
+            color: #880e4f;
         }
 
         #statusContainer {
@@ -41,7 +42,7 @@
 
         #status {
             font-size: 16px;
-            color: #666;
+            color: #ad1457;
         }
 
         .button-container {
@@ -55,32 +56,42 @@
             width: 23%;
             margin: 1%;
             padding: 15px 0;
-            background-color: #007bff;
+            background-color: #f06292;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 10px;
             font-size: 20px;
+            transition: background-color 0.2s ease;
+        }
+
+        a:hover {
+            background-color: #ec407a;
         }
 
         a.function-button {
-            background-color: #28a745;
+            background-color: #ba68c8;
         }
 
         a.clear-button {
-            background-color: #dc3545;
+            background-color: #ef5350;
         }
 
         a.equals-button {
-            background-color: #ffc107;
+            background-color: #ffb74d;
         }
 
         a.modifier-button {
-            background-color: #17a2b8;
+            background-color: #4db6ac;
         }
 
         #calculatorFooter {
             text-align: center;
             margin-top: 10px;
+        }
+
+        #linangdata img {
+            width: 24px;
+            height: 24px;
         }
     </style>
 </head>
